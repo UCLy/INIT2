@@ -19,6 +19,7 @@ KEY_PREDICTION_ERROR = "E"  # Compute the prediction errors
 KEY_ENCLOSE = "N"
 KEY_POSITION = "P"
 KEY_COMPARE = ""
+KEY_SAVE = "S"
 
 
 class CtrlWindow:
@@ -137,3 +138,5 @@ class CtrlWindow:
             self.workspace.memory.adjust_robot_position()
             self.workspace.show_place_cell(self.workspace.memory.place_memory.current_cell_id)
             self.workspace.enacter.interaction_step = ENACTION_STEP_RENDERING
+        elif user_key.upper() == KEY_SAVE:
+            self.view.save()

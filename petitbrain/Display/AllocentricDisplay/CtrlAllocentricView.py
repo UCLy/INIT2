@@ -10,6 +10,7 @@ from ...Memory.AllocentricMemory.AllocentricMemory import CELL_UNKNOWN
 from ...Memory.AllocentricMemory import STATUS_FLOOR, STATUS_2, STATUS_ECHO, STATUS_3, STATUS_4, COLOR_INDEX, CLOCK_FOCUS, \
     CLOCK_PLACE, PHENOMENON_ID, PLACE_CELL_ID, CLOCK_UPDATED, CLOCK_PROMPT
 from ...Memory import PLACE_GRID_DURABILITY
+from ..CtrlWindow import KEY_SAVE
 
 
 class CtrlAllocentricView:
@@ -23,7 +24,11 @@ class CtrlAllocentricView:
         # Handlers of event functions that need access to workspace
         def on_text(text):
             """Send user keypress to the workspace to handle"""
-            self.workspace.process_user_key(text)
+            if text.upper() == KEY_SAVE:
+                print("saving allocentric")
+                self.view.save()
+            else:
+                self.workspace.process_user_key(text)
 
         self.view.on_text = on_text
 

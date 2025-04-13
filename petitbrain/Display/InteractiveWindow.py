@@ -162,6 +162,12 @@ class InteractiveWindow(pyglet.window.Window):
         """ Zoom the window from the center of the world"""
         self.zoom(dy)
 
+    def save(self):
+        """Save the view to file"""
+        self.switch_to()  # Activates the OpenGL context of this window
+        image = pyglet.image.get_buffer_manager().get_color_buffer().get_image_data()
+        image.save(f"log/{self.caption}.png")
+
     def zoom(self, dy):
         """Zoom the view by the y scroll"""
         f = ZOOM_OUT_FACTOR if dy > 0 else ZOOM_IN_FACTOR if dy < 0 else 1
