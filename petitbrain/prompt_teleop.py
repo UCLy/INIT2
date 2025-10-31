@@ -27,10 +27,12 @@ class PromptTeleop:
     def send_command(self, command_string):
         """ Sending the action string, waiting for the outcome, and returning the outcome bytes """
         _outcome = None  # Default if timeout
-        # print("sending " + action)
-        self.socket.sendto(bytes(command_string, 'utf-8'), (self.IP, self.port))
+        # print("sending ", action, "to", (self.IP, self.port), "...")
         try:
+            self.socket.sendto(bytes(command_string, 'utf-8'), (self.IP, self.port))
             _outcome, address = self.socket.recvfrom(512)
+        except socket.gaierror:  # Invalid IP address
+            print("Invalid IP address: ", self.IP)
         except socket.error as error:  # Time out error when robot is not connected
             print(error)
         return _outcome
