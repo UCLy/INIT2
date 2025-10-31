@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Olivier Georgeon, 2023.
+# Olivier Georgeon, 2025.
 # This code is used to tele-operate the robot from input prompts.
 
 import socket
@@ -59,9 +59,10 @@ class PromptTeleop:
         print("Next clock:", self.clock)
         return _outcome
 
+
 def usage():
     print("Action keys: 1: Turn left, 2: Backward, 3: Turn right, 4: Swipe left, 6: Swipe right, 8: Forward, -: Scan")
-    print("Ctrl+C and ENTER to abort")
+
 
 # Test the wifi interface by controlling the robot from the console
 # Provide the Robot's IP address as a launch argument. For example:
